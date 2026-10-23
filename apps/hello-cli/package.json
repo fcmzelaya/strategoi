@@ -1,0 +1,13 @@
+{
+  "name": "@strategoi/hello-cli",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@strategoi/hello": "workspace:*"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "node dist/main.js"
+  }
+}

@@ -1,0 +1,14 @@
+// Shared compiler settings. Each package's tsconfig.json extends this file
+// and only adds where its source is and where the JavaScript goes.
+{
+  "compilerOptions": {
+    "target": "ES2023",
+    "module": "NodeNext",
+    "moduleResolution": "NodeNext",
+    "strict": true,
+    "declaration": true,
+    "sourceMap": true,
+    "skipLibCheck": true,
+    "types": ["node"]
+  }
+}

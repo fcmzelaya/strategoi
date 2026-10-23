@@ -1,0 +1,4 @@
+# Every folder under apps/ and packages/ is one package of the workspace.
+packages:
+  - "apps/*"
+  - "packages/*"
