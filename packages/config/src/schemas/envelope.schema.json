@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://strategoi.dev/schemas/envelope.schema.json",
+  "title": "Envelope",
+  "description": "The fields every config file has (decision 0006). The kind's own schema checks spec.",
+  "type": "object",
+  "required": ["kind", "id", "version", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "kind": { "type": "string", "pattern": "^[A-Z][A-Za-z0-9]*$" },
+    "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9_-]*$" },
+    "version": { "type": "integer", "minimum": 1 },
+    "label": { "type": "string" },
+    "spec": { "type": "object" }
+  }
+}

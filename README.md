@@ -14,5 +14,6 @@ packages/   shared code the apps import
 ```bash
 pnpm install
 pnpm build
+pnpm test
 pnpm start
 ```

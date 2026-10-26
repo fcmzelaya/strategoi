@@ -1,0 +1,14 @@
+# strategoi-v2's packages/semantic-engine/pipelines/text_to_svg.yaml,
+# converted to the 0006 envelope. The step list is unchanged.
+kind: Pipeline
+id: text-to-svg
+version: 1
+label: Text to SVG
+spec:
+  steps:
+    - sources.text
+    - transforms.sentence_segmenter
+    - transforms.tokenizer
+    - transforms.rule_engine
+    - transforms.graph_builder
+    - sinks.svg

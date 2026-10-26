@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "dist",
+    // Lets TypeScript import the JSON Schema files in src/schemas.
+    "resolveJsonModule": true
+  },
+  "include": ["src"]
+}
