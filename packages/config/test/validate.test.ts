@@ -1,7 +1,17 @@
 import { readFileSync } from "node:fs";
 import { describe, expect, it } from "vitest";
 import { parse } from "yaml";
-import { validateConfig } from "../src/index.js";
+import { refErrors, validateConfig } from "../src/index.js";
+
+describe("refErrors", () => {
+  it("accepts a reference that follows the envelope's rules", () => {
+    expect(refErrors({ kind: "Pipeline", id: "text-to-svg" })).toEqual([]);
+  });
+
+  it("rejects names that could escape a folder", () => {
+    expect(refErrors({ kind: "../Pipeline", id: "../../secrets" })).toHaveLength(2);
+  });
+});
 
 const fixture = (name: string): unknown =>
   parse(readFileSync(new URL(`./fixtures/${name}`, import.meta.url), "utf8"));

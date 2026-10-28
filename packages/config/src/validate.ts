@@ -39,6 +39,18 @@ export function validateConfig(data: unknown): ValidationResult {
   return { ok: true, config: data };
 }
 
+// The envelope's kind and id rules, for checking a reference on its own
+// (for example before it becomes part of a file path).
+const kindPattern = new RegExp(envelopeSchema.properties.kind.pattern);
+const idPattern = new RegExp(envelopeSchema.properties.id.pattern);
+
+export function refErrors(ref: { kind: string; id: string }): string[] {
+  const errors: string[] = [];
+  if (!kindPattern.test(ref.kind)) errors.push(`kind: "${ref.kind}" must match ${kindPattern.source}`);
+  if (!idPattern.test(ref.id)) errors.push(`id: "${ref.id}" must match ${idPattern.source}`);
+  return errors;
+}
+
 // Turns Ajv's error objects into lines like "spec/steps/1: must match pattern ...".
 function describe(errors: ErrorObject[] | null | undefined, prefix: string): string[] {
   return (errors ?? []).map((e) => {
